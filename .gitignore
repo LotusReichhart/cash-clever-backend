@@ -1,0 +1,13 @@
+# Python virtual environment
+.venv/
+env/
+venv/
+
+# IDE/editor
+.idea/
+*.pyc
+__pycache__/
+
+# Env files
+.env*
+!.env.example

@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  backend:
+    build: .
+    container_name: cash-clever-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - ENV=production
