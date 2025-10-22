@@ -8,7 +8,25 @@ services:
       - "8000:8000"
     volumes:
       - ./src:/app/src
+    env_file:
+      - .env.development
     environment:
       - PYTHONUNBUFFERED=1
       - ENV=development
     command: uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload
+
+  database:
+    image: postgres:15
+    container_name: cash-clever-db
+    restart: always
+    environment:
+      POSTGRES_USER: DevUser
+      POSTGRES_PASSWORD: ThisIsNotTheRealPassword
+      POSTGRES_DB: cash_clever_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
