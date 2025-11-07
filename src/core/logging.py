@@ -10,3 +10,6 @@ def setup_logging():
     handler.setFormatter(formatter)
     root_logger.addHandler(handler)
     root_logger.setLevel(logging.DEBUG)
+
+    logging.getLogger("sqlalchemy.engine").setLevel(logging.WARNING)
+    logging.getLogger("sqlalchemy.pool").setLevel(logging.WARNING)

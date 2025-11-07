@@ -1,8 +1,8 @@
 import pytest
 from unittest.mock import AsyncMock, MagicMock
 from src.domain.exceptions.auth_exception import EmailAlreadyUsedError, TooManyOtpRequestsError
-from src.domain.use_cases.auth.signup.request_signup import RequestSignupUseCase
-from src.core.exceptions import ServerError
+from src.application.use_cases.auth.signup.request_signup import RequestSignupUseCase
+from src.domain.exceptions.app_exceptions import ServerError
 
 
 @pytest.mark.asyncio

@@ -64,7 +64,7 @@ jobs:
   #         username: ${{ secrets.SSH_USER }}
   #         key: ${{ secrets.SSH_KEY }}
   #         script: |
-  #           cd /app/cash-clever-backend
+  #           cd /di/cash-clever-backend
   #           docker pull lotusreichhart/cash-clever-backend:${{ steps.vars.outputs.sha_short }}
   #           docker tag lotusreichhart/cash-clever-backend:${{ steps.vars.outputs.sha_short }} cash-clever-backend:current
   #           docker-compose -f docker-compose.prod.yml up -d --force-recreate

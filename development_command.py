@@ -3,7 +3,7 @@ import sys
 
 COMPOSE_FILE = "docker-compose.dev.yml"
 DB_CONTAINER = "cash-clever-db"
-DB_USER = "LotusReichhart"
+DB_USER = "DevUser"
 DB_NAME = "cash_clever_db"
 
 def compose_up():

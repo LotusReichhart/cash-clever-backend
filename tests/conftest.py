@@ -5,7 +5,7 @@ import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from src.data.db.base import Base
+from src.infrastructure.database.postgresql.base import Base
 
 # Thêm thư mục gốc vào sys.path
 ROOT_DIR = Path(__file__).resolve().parent.parent

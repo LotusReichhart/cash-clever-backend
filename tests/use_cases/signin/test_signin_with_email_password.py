@@ -1,11 +1,9 @@
 import pytest
-import logging
 from unittest.mock import AsyncMock, MagicMock
 
-from src.core.exceptions import ServerError, AppError
-from src.domain.entities import UserEntity
+from src.domain.exceptions.app_exceptions import ServerError, AppError
 from src.domain.exceptions.auth_exception import EmailNotRegisteredError, IncorrectPasswordError
-from src.domain.use_cases.auth import SigninWithEmailPasswordUseCase
+from src.application.use_cases import SigninWithEmailPasswordUseCase
 
 
 @pytest.mark.asyncio

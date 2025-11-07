@@ -1,8 +1,8 @@
 import pytest
 from unittest.mock import AsyncMock, MagicMock
-from src.domain.use_cases.auth.signup.signup_verification import SignupVerificationUseCase
+from src.application.use_cases.auth.signup.signup_verification import SignupVerificationUseCase
 from src.domain.entities import UserEntity, UserStatus
-from src.core.exceptions import AppError, ServerError
+from src.domain.exceptions.app_exceptions import AppError, ServerError
 
 
 @pytest.mark.asyncio

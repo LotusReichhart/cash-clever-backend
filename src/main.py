@@ -2,15 +2,16 @@ from fastapi import FastAPI, Request
 from slowapi.errors import RateLimitExceeded
 
 from src.core.config import settings
-from src.app.container import Container
-from src.core.exceptions import AppError
-from src.core.lifespan import lifespan
+from src.core.di import Container
 from src.core.limiter import limiter
 from src.core.logging import setup_logging
-from src.presentation.api.middlewares.auth_middleware import AuthMiddleware
 
-from src.schemas.error_response import ErrorResponse
+from src.domain.exceptions.app_exceptions import AppError, TooManyRequestsError
 
+from src.infrastructure.config.lifespan import lifespan
+
+from src.presentation.api.v1.middlewares.auth_middleware import AuthMiddleware
+from src.presentation.api.v1.schemas.error_response import ErrorResponse
 from src.presentation.api import api_router
 
 
@@ -28,9 +29,9 @@ def create_app() -> FastAPI:
     @app.exception_handler(RateLimitExceeded)
     async def rate_limit_handler(request: Request, exc: RateLimitExceeded):
         return ErrorResponse(
-            status=429,
-            message="Too Many Requests",
-            errors={"message": "Bạn đang thao tác quá nhanh. Vui lòng thử lại sau ít phút."}
+            status=TooManyRequestsError.status_code,
+            message=TooManyRequestsError.message,
+            errors={"message": TooManyRequestsError.errors}
         )
 
     @app.middleware("http")
